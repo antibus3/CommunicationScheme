@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <title>Схема коммуникаций</title>
+    <style>
+        #transform {
+            width: 400px;
+            height: 200px;
+            text-align: center;
+            padding: 15px;
+            border: inset;
+            border-radius: 10px;
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            background-color: Window;
+        }
+        .buttonTransform {
+            width: 150px;
+            height: 30px;
+        }
+        .mainCanvas {
+            position:absolute;
+            top:0px;
+            left: 0px;
+            background-color: #eee; 
+        }
+        .maitTable{
+            position:absolute;
+            left: 1000px;
+        }
+
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" class="mainCanvas" width="1000" height="700">
+        Ваш браузер не поддерживает Canvas
+    </canvas>
+    <table class="maitTable">
+        <tr>
+            <td>Ввод комуникации</td>
+        </tr>
+        <tr>
+            <td>Номер коммуникации:</td>
+            <td><input id="number" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Тип изоляции: </td>
+            <td><input id="type" type="text" /></td>
+        </tr>
+        <tr>
+            <td> Год прокладки:</td>
+            <td><input id="year" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Подземная\надземная</td>
+            <td>
+                <select id="location">
+                    <option value="ground"> Наземная </option>
+                    <option value="underground">Подземная</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="addCommunication()">Нанести на схему</button><br />
+                <button id="endEnter" onclick="endCommunication()" style="display:none">Завершить занесение на схему</button>
+            </td>
+
+        </tr>
+        <tr style="height:30px;"></tr>
+        <tr>
+            <td>Информация об коммуниуациях</td>
+        </tr>
+        <tr>
+            <td>Номер коммуникации:</td>
+            <td><label id="outNumber" type="text"></label></td>
+        </tr>
+        <tr>
+            <td>Тип изоляции:</td>
+            <td><label id="outType" type="text"></label></td>
+        </tr>
+        <tr>
+            <td>Год прокладки:</td>
+            <td><label id="outYear" type="text"></label></td>
+        </tr>
+        <tr style="height:30px;"></tr>
+        <tr>
+            <td>Ввод територии помещения</td>
+        </tr>
+        <tr>
+            <td><button onclick="EnterRoom()">Нарисовать помещение</button></td>
+        </tr>
+        <tr>
+            <td width="200" colspan="2">
+                <h2>Описание</h2>
+                С помощью кнопки "Нарисовать помещение" можно внести н схему очертания помещения.
+                Для ввода  коммуникаций, в панели "Ввод комуникации" ввести данные о вводимой коммуникации.
+                Далее, нажатиями на схеме, выбрать места прохождения коммуникаций.
+                При наведении на коммуникацию, в панеле "Информация об коммуниуациях" отображается информация о ней.
+                при щесчке на коммуникацию, можно изменить её параметры в всплывающем окне.
+
+            </td>
+        </tr>
+    </table>
+
+    <div id="transform">
+        <table>
+            <tr>
+                <td> Номер коммуникации:</td>
+                <td><input id="infoNumber" type="text" /></td>
+            </tr>
+            <tr>
+                <td> Тип изоляции:</td>
+                <td><input id="infoType" type="text" /></td>
+            </tr>
+            <tr>
+                <td>  Год прокладки:</td>
+                <td><input id="infoYear" type="text" /></td>
+            </tr>
+            <tr>
+                <td><button class="buttonInfo" onclick="EnterTransform()">Принять изменения</button></td>
+                <td><button class="buttonInfo" onclick="CloseTransform()">Отмена</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="Script.js"></script>
+</body>
+</html>
